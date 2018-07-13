@@ -1,0 +1,76 @@
+# 
+# conf/meta/stepsize.yml
+# 
+# Meta-configuration of all stepsize experiments on gaussian data.
+# 
+job: stepsize        # this file configures the function Job.<job>
+seed: 1337           # random number generator seed
+num_bootstraps:  20  # the number of bootstrap samples considered
+dsea_iterations: 20  # number of DSEA iterations in each experiment
+
+
+# output of configuration expansion and of experiments
+configfile: conf/job/gen/stepsize_$id_$skconfig.yml  # variables obtained from dataset
+outfile:    res/spectra/stepsize_$id_$skconfig.csv
+
+
+# data sets used
+dataset:
+
+    # Gaussian toy data
+    - id:       gaussian  # ID of data set
+      skconfig: [ "nb" ]  # naive Bayes classifier
+      f_train:  auxiliary # use auxiliary (= uniform) training set
+    
+    # FACT data
+    - id:       fact
+      skconfig: [ "rf", "nb" ] # random forest and naive Bayes
+      f_train:  uniform        # sub-sample uniform training data
+
+
+experiments:
+    
+    # original DSEA
+    - stepsize:
+        method: constant
+        alpha: 1.0
+      fixweighting: false
+      name: "original {\\sc Dsea}"
+      
+    # DSEA with 'optimal' step size (brute-force search with known truth)
+    - stepsize:
+        method: optimal
+      fixweighting: true
+      name: "optimal $\\alpha^{(k)}$"
+    
+    # DSEA with different constant step sizes
+    - stepsize:
+        method: constant
+        alpha:  [ 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1 ]
+      fixweighting: true
+      name: "$\\alpha^{(k)} = $alpha$"
+    
+    # DSEA with slow decay
+    - stepsize:
+        method: decay_mul
+        a_1: 1.0
+        eta: [ 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0 ]
+      fixweighting: true
+      name: "$\\alpha^{(k)} = k^{$eta - 1}$"
+    
+    # DSEA with fast decay
+    - stepsize:
+        method: decay_exp
+        a_1: 1.0
+        eta: [ 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1 ]
+      fixweighting: true
+      name: "$\\alpha^{(k)} = {$eta}^{k - 1}$"
+    
+    # DSEA with RUN-like line search
+    - stepsize:
+        method: run
+        tau:    [ 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 0.0 ]
+        num_clusters: 21 # number of clusters to discretize the feature space
+      fixweighting: true
+      name: "$\\alpha^{(k)}_{\\mathcal{RUN}}$ with $\\tau = $tau$"
+

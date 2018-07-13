@@ -1,0 +1,17 @@
+# 
+# conf/job/gridsearch.yml
+# 
+# Configuration of a grid search to obtain a reasonable meta-parameters for a random forest.
+# 
+job: gridsearch  # this file configures the function Job.<job>
+seed: 42         # random number generator seed
+dataset: fact    # the data to be used
+skconfig: rf     # the classifier to be used
+
+outfile:  res/gridsearch-rf.yml  # output file is a new configuration with the best parameters
+
+# parameter ranges that define the grid
+parameters:
+  n_estimators: 15:30
+  max_depth: 1:15
+

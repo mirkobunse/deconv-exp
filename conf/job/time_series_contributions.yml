@@ -1,0 +1,20 @@
+# 
+# time_series_contributions.yml
+# 
+# Experiments on future work with time series
+# 
+job: time_series_contributions # this file configures the function Job.<job>
+seed: 1337                     # random number generator seed
+
+outfile: res/time_series_contributions.csv # where contributions are stored for further inspection
+
+# the data set used
+dataset:
+  id: magic
+  skconfig: rf
+
+# the sliding window to average spectra over
+window:
+  width: 250
+  step:   50
+

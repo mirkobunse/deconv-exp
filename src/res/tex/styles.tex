@@ -1,0 +1,83 @@
+% 'axis line on top' option
+\makeatletter \newcommand{\pgfplotsdrawaxis}{\pgfplots@draw@axis} \makeatother
+\pgfplotsset{axis line on top/.style={
+  axis line style = transparent,
+  ticklabel style = transparent,
+  tick style = transparent,
+  axis on top = false,
+  after end axis/.append code = {
+    \pgfplotsset{
+      axis line style = opaque,
+      ticklabel style = opaque,
+      tick style = opaque,
+      grid = none
+    }
+    \pgfplotsdrawaxis
+  }
+}}
+
+% elegant legend on the outside
+\pgfplotsset{outside legend/.style = {
+  legend style = {
+    draw = none,
+    at = {(1.025,.5)},
+    anchor = west,
+    row sep = .25em
+  }
+}}
+
+% default axis style
+\pgfplotsset{default axis/.style = {
+  axis line on top,
+  axis line style = {anthracite, semithick},
+  axis background/.style = {fill = white},
+  legend cell align = {left},
+  scaled y ticks = false
+}}
+
+% histograms
+\pgfplotsset{histogram axis/.style = {
+  default axis,
+  legend style = {
+    at = {(0.98,0.02)},
+    anchor = south east
+  },
+  legend cell align = left
+}}
+
+\pgfplotsset{histogram plot/.style = {
+  const plot,
+  mark = none
+}}
+
+% progress plots
+\pgfplotsset{progress axis/.style = {
+  default axis
+}}
+
+\pgfplotsset{progress plot/.style = {
+  semithick,
+  solid,
+  opacity = .33,
+  mark options = {
+    scale = 1.2,
+    fill = white,
+    opacity = 1
+  },
+  every error bar/.style = {opacity = .66}
+}}
+
+% marks for progress plots
+\pgfplotsset{m00/.style = {mark = none, opacity = 1, anthracite, densely dashed}}
+\pgfplotsset{m01/.style = {tu01, mark = *}}
+\pgfplotsset{m02/.style = {tu02, mark = square*}}
+\pgfplotsset{m03/.style = {tu03, mark = triangle*}}
+\pgfplotsset{m04/.style = {tu04, mark = diamond*}}
+\pgfplotsset{m05/.style = {tu05, mark = pentagon*}}
+\pgfplotsset{m06/.style = {tu06, mark = otimes*}}
+\pgfplotsset{m07/.style = {tu07, mark = oplus*}}
+\pgfplotsset{m08/.style = {tu08, mark = star*}}
+\pgfplotsset{m09/.style = {tu09, mark = x}}
+\pgfplotsset{m10/.style = {tu10, mark = +}}
+\pgfplotsset{m11/.style = {tu11, mark = |}}
+% also: 'asterisk', '-', and most of the above without '*'

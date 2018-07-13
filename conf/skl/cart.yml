@@ -1,0 +1,11 @@
+# 
+# conf/sklearn/cart.yml
+# 
+# This file configures an Sklearn CART tree.
+# http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+# 
+classifier: DecisionTreeClassifier
+package: tree
+parameters:
+  max_depth: 5
+

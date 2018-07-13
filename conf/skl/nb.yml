@@ -1,0 +1,10 @@
+# 
+# conf/sklearn/nb.yml
+# 
+# This file configures an Sklearn Naive Bayes classifier.
+# http://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html
+# 
+classifier: GaussianNB
+package: naive_bayes
+parameters:
+

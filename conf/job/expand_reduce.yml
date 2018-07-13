@@ -1,0 +1,30 @@
+# 
+# expand_reduce.yml
+# 
+# Experiments on expansion/reduction in DSEA.
+# 
+job: expand_reduce   # this file configures the function Job.<job>
+seed: 1337           # random number generator seed
+num_bootstraps:  20  # the number of bootstrap samples considered
+dsea_iterations: 20  # number of DSEA iterations in each experiment
+
+outfile: res/spectra/expand_reduce.csv # where spectra are stored for further inspection
+
+experiments:
+  
+  # DSEA+ without expansion
+  - factor: 1
+    name: "no expansion"
+  
+  # different expansion factors
+  - factor: 2
+    name: "expand with factor 2"
+  - factor: 3
+    name: "expand with factor 3"
+  - factor: 4
+    name: "expand with factor 4"
+  - factor: 5
+    name: "expand with factor 5"
+  - factor: 6
+    name: "expand with factor 6"
+

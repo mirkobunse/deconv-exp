@@ -1,0 +1,241 @@
+# 
+# conf/job/gen/stepsize_gaussian_nb.yml
+# 
+# Automatically generated with Conf.stepsize("conf/job/meta/stepsize.yml").
+# 
+# Git commit: 34b2225dee49347523fa2d455af091526b4b81d9
+# Git origin: git@bitbucket.org:mbunse/mt-exp.git
+# Git uncommited changes: false
+# 
+configfile: conf/job/gen/stepsize_gaussian_nb.yml
+experiments:
+  - stepsize:
+      method: constant
+      alpha: 1.0
+    name: original {\sc Dsea}
+    fixweighting: false
+  - stepsize:
+      method: optimal
+    name: optimal $\alpha^{(k)}$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 1.0
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.9
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.8
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.7
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.6
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.5
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.4
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.3
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.2
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: constant
+      alpha: 0.1
+    name: $\alpha^{(k)} = $alpha$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.9
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.8
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.7
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.6
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.5
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.4
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.3
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.2
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.1
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_mul
+      a_1: 1.0
+      eta: 0.0
+    name: $\alpha^{(k)} = k^{$eta - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.9
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.8
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.7
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.6
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.5
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.4
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.3
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.2
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: decay_exp
+      a_1: 1.0
+      eta: 0.1
+    name: $\alpha^{(k)} = {$eta}^{k - 1}$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 0.001
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 0.0001
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 1.0e-5
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 1.0e-6
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 1.0e-7
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 1.0e-8
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 1.0e-9
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+  - stepsize:
+      method: run
+      tau: 0.0
+      num_clusters: 21
+    name: $\alpha^{(k)}_{\mathcal{RUN}}$ with $\tau = $tau$
+    fixweighting: true
+job: stepsize
+outfile: res/spectra/stepsize_gaussian_nb.csv
+dsea_iterations: 20
+seed: 1337
+num_bootstraps: 20
+dataset:
+  skconfig: nb
+  f_train: auxiliary
+  id: gaussian

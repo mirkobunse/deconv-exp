@@ -1,0 +1,41 @@
+# 
+# gaussian-high.yml
+# 
+# Generation of toy MC data with high amount of smearing.
+# For more information, see gaussian.yml.
+# 
+datafile: data/gaussian-high.hdf5
+discretization_y:
+    min:  2.0
+    max: 44.0
+    num_bins: 21
+
+num_events: 150000
+event_seed: 1337 # random number seed for event generation
+
+y:
+    min:  0.0
+    max: 50.0
+    mean1: 15.0
+    mean2: 30.0
+    sigma1: 3.0
+    sigma2: 4.0
+    weight1: 0.5
+    weight2: 0.5
+
+attributes:
+    num_attributes: 10
+    seed: 1337
+    offset:
+        min: -100.0
+        max:  100.0
+    factor:
+        min: -10.0
+        max:  10.0
+    gamma:
+        min: 1.0
+        max: 1.0
+    sigma: # only difference to gaussian.yml
+        min:  6.0
+        max: 10.0
+

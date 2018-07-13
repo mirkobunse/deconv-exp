@@ -1,0 +1,38 @@
+# 
+# magic.yml
+# 
+# How to use and fix the files obtained by docker-truee.
+# 
+datafile: data/magic.csv # fix_magic writes to this file
+discretization_y:
+  min: 1.6
+  max: 4.4
+  num_bins: 12
+
+# 
+# How the input files from docker-truee are fixed
+# 
+infiles: data/magic_(za\d\dto\d\d).csv # regular expression for zenith angle group files
+zenith-angle-group: source # column in which the zenith angle group is stored
+
+# how to rename columns for convenience
+rename:
+  MMcEvt_1.fEnergy: energy
+  MHillasExt_1.fM3Long: m3_long
+  MHillasExt_1.fM3Trans: m3_trans
+  MHillas_1.fLength: length
+  MHillas_1.fSize: size
+  MHillas_1.fWidth: width
+  MImagePar_1.fNumIslands: num_islands
+  MImagePar_1.fNumSinglePixels: num_single_pixels
+  MNewImagePar_1.fConc: conc
+  MNewImagePar_1.fLeakage1: leakage1
+  MNewImagePar_1.fLeakage2: leakage2
+
+# which (renamed) columns to use the log10 from instead of original values
+# ("log10_" is prepended to column names)
+logarithm:
+  - energy
+  - length
+  - size
+

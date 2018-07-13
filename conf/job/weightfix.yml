@@ -1,0 +1,46 @@
+# 
+# weightfix.yml
+# 
+# Experiments on the proposed re-weighting fix for DSEA.
+# 
+job: weightfix      # this file configures the function Job.<job>
+seed: 1337          # random number generator seed
+num_bootstraps:  20 # the number of bootstrap samples considered
+dsea_iterations: 20 # number of DSEA iterations in each experiment
+
+outfile: res/spectra/weightfix.csv # where spectra are stored for further inspection
+
+
+# data sets used
+datasets:
+
+    # Gaussian toy data
+    - id:       gaussian                      # ID of data set
+      skconfig: nb                            # Naive Bayes classifier
+      f_train: [ "appropriate", "auxiliary" ] # pdf of training set: original and auxiliary (= uniform)
+    
+# ==============================================
+# FACT and MAGIC data is not available in public
+# ==============================================
+# 
+#   # FACT data (with random forest and uniform subsampling)
+#   - id:       fact
+#     skconfig: rf
+#     f_train: [ "appropriate", "uniform" ]
+#   
+#   # MAGIC data (with random forest and uniform subsampling)
+#   - id:       magic
+#     skconfig: rf
+#     f_train: [ "appropriate", "uniform" ]
+
+
+experiments:
+  
+    # regular DSEA
+    - fixweighting: false
+      name: "original {\\sc Dsea}"
+    
+    # fixed DSEA
+    - fixweighting: true
+      name: "re-weighting fix"
+

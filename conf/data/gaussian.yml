@@ -1,0 +1,65 @@
+# 
+# gaussian.yml
+# 
+# Generation and usage of toy MC data for an unfolding. This approach follows [ruhe2013data],
+# generating a double-gaussian true target distribution and applying a gaussian smearing to
+# obtain the secondary attributes.
+# 
+# The file is read by the Data module during generate_gaussian(..). The discretization
+# parameters are read by Data.LinearDiscretizer(..).
+# 
+datafile: data/gaussian.hdf5
+discretization_y:
+    min:  2.0
+    max: 44.0
+    num_bins: 21
+
+# 
+# General generation info
+# 
+num_events: 150000
+event_seed: 1337 # random number seed for event generation
+
+# 
+# How the target quantity Y is generated
+# 
+y:
+    min:  0.0
+    max: 50.0
+    mean1: 15.0
+    mean2: 30.0
+    sigma1: 3.0
+    sigma2: 4.0
+    weight1: 0.5
+    weight2: 0.5
+
+# 
+# Secondary attributes x1...x10
+# 
+# The parameters offset, factor, gamma and sigma are drawn uniformly at random from the
+# given ranges. They remain fixed for each of the attributes. Each attribute j of item i
+# is computed as follows:
+# 
+# x_{i, j} = N(offset_j + factor_j * y_i ^ gamma_j, sigma_j)
+# 
+# where N(m, sigma_j) draws randomly from a normal distribution with mean m.
+# 
+# This approach follows the description of [ruhe2013data]. Note that the current state of
+# implementation of [ruhe2013data] is not strictly following this description.
+# 
+attributes:
+    num_attributes: 10
+    seed: 1337 # random number seed for attribute generation
+    offset: # constant added to y
+        min: -100.0
+        max:  100.0
+    factor: # constant multiplied to y
+        min: -10.0
+        max:  10.0
+    gamma: # constant exponent over y
+        min: 1.0
+        max: 1.0
+    sigma: # constant width of gaussian smearing
+        min: 4.0
+        max: 6.0
+

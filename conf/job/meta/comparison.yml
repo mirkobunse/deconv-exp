@@ -1,0 +1,120 @@
+# 
+# conf/meta/comparison.yml
+# 
+# Meta-configuration of all comparison experiments.
+# 
+job: comparison     # this file configures the function Job.<job>
+seed: 1337          # random number generator seed
+num_bootstraps: 20  # the number of bootstrap samples
+
+
+# output of configuration expansion and of experiments
+configfile: conf/job/gen/comparison_$id_$ftrain.yml  # variables obtained from the data set
+outfile:    res/spectra/comparison_$id_$ftrain.csv
+
+
+# data sets used
+dataset:
+
+    # Gaussian toy data
+    - id:       gaussian                      # ID of data set
+      skconfig: nb                            # Naive Bayes classifier
+      f_train: [ "appropriate", "auxiliary" ] # pdf of training set, original and auxiliary (uniform)
+    
+    # FACT data
+    - id:       fact
+      skconfig: rf
+      f_train: [ "appropriate", "uniform" ]
+    
+    # MAGIC data
+    - id:       magic
+      skconfig: rf
+      f_train: [ "appropriate", "uniform" ]
+
+
+experiments:
+    
+    # original DSEA
+    - method: dsea
+      epsilon: 1e-9 # maximum epsilon (others are obtained in post-processing)
+      K: 100        # maximum number of iterations
+      stepsize:
+        method: constant
+        alpha: 1.0
+      fixweighting: false
+      name: "original {\\sc Dsea}"
+    
+    # DSEA with different constant step sizes
+    - method: dsea
+      epsilon: 1e-9
+      K: 100
+      stepsize:
+        method: constant
+        alpha:  [ 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1 ]
+      fixweighting: true
+      name: "$\\alpha^{(k)} = $alpha$"
+    
+    # DSEA with slow decay
+    - method: dsea
+      epsilon: 1e-9
+      K: 100
+      stepsize:
+        method: decay_mul
+        a_1:    1.0
+        eta:    [ 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0 ]
+      fixweighting: true
+      name: "$\\alpha^{(k)} = k^{$eta - 1}$"
+    
+    # DSEA with fast decay
+    - method: dsea
+      epsilon: 1e-9
+      K: 100
+      stepsize:
+        method: decay_exp
+        a_1:    1.0
+        eta:    [ 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1 ]
+      fixweighting: true
+      name: "$\\alpha^{(k)} = {$eta}^{k - 1}$"
+    
+    # DSEA with RUN-like line search
+    - method: dsea
+      epsilon: 1e-9
+      K: 100
+      stepsize:
+        method: run
+        tau:    [ 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 0.0 ]
+        num_clusters: 21 # number of clusters to discretize the feature space
+      fixweighting: true
+      name: "$\\alpha^{(k)}_{\\mathcal{RUN}}$ with $\\tau = $tau$"
+    
+    
+    # Iterative Bayesian Unfolding without smoothing
+    - method: ibu
+      epsilon: 1e-9
+      K: 1000
+      num_clusters: [ 21, 84, 147, 210 ] # = linspace(21, 210, 4)
+      smoothing:
+        method: none
+      name: "IBU (no smoothing, $J = $num_clusters$)"
+    
+    # ...and different smoothing orders
+    - method: ibu
+      epsilon: 1e-9
+      K: 1000
+      num_clusters: [ 21, 84, 147, 210 ]
+      smoothing:
+        method: polynomial
+        order: [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+      name: "IBU (smoothing order $order, $J = $num_clusters$)"
+    
+    
+    # Regularized Unfolding
+    - method: run
+      epsilon: 1e-9
+      K: 1000
+      num_clusters: [ 21, 84, 147, 210 ]
+      discretization:
+        method: [ "expand", "reduce" ]
+        factor: [ 1, 2, 3, 4, 5, 6 ]
+      name: "$\\mathcal{RUN}$ ($method with factor $factor, $J = $num_clusters$)"
+

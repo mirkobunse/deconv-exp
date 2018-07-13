@@ -1,0 +1,37 @@
+# 
+# smoothing.yml
+# 
+# Experiments on smoothing of intermediate prior estimates [dagostini2010improved].
+# 
+job: smoothing       # this file configures the function Job.<job>
+seed: 1337           # random number generator seed
+num_bootstraps:  20  # the number of bootstrap samples considered
+dsea_iterations: 20  # number of DSEA iterations in each experiment
+
+outfile: res/spectra/smoothing.csv # where spectra are stored for further inspection
+
+experiments:
+  
+  # original DSEA
+  - smoothing:
+      method: none
+    fixweighting: false
+    name: "original {\\sc Dsea}"
+  
+  - smoothing:
+      method: none
+    fixweighting: true
+    name: "no smoothing"
+  
+  # 
+  # polynomial smoothing a la D'Agostini
+  # 
+  # D'Agostini does not limit his smoothing operation to polynomials. He insists on using
+  # apriori knowledge for the smoothing, if available.
+  # 
+  - smoothing:
+      method: polynomial
+      order: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ] # order is expanded
+    fixweighting: true
+    name: "polynomial (order $order)"
+  

@@ -1,0 +1,11 @@
+# 
+# fact.yml
+# 
+# Configures the default discretization of FACT data.
+# 
+datafile: data/fact.csv
+discretization_y:
+  min: 2.4
+  max: 4.2
+  num_bins: 12
+

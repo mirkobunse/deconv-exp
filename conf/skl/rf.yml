@@ -1,0 +1,16 @@
+# 
+# conf/sklearn/rf.yml
+# 
+# This file configures an Sklearn Random Forest.
+# http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+# 
+# Automatically generated with Job.gridsearch("conf/job/gridsearch.yml").
+# git commit: 808fca6316430d1760662042e916d2afe131bc74
+# 
+classifier: RandomForestClassifier
+package: ensemble
+parameters:
+  n_estimators: 27 # 15:30
+  max_depth: 8 # 1:15
+  random_state: 1337 # random number generator seed
+

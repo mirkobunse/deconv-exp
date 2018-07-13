@@ -1,0 +1,647 @@
+tabs:
+
+  # clustering tab
+  - label: clustering
+    regex: "$prefix_$cond.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/clustering"
+      - id: cond
+        type: GtkBox
+        parameters: :h
+        childrenlogic: or
+        children:
+          - id: cond-button
+            type: GtkCheckButton
+            properties:
+              label: "cond_R"
+            activetext: "cond_R"
+          - id: other
+            type: GtkBox
+            parameters: :h
+            childrenlogic: and
+            children:
+              - id: references
+                type: GtkBox
+                parameters: :v
+                childrenlogic: or
+                children:
+                  - id: references-ib
+                    type: GtkCheckButton
+                    properties:
+                      label: "ib"
+                    activetext: "ib"
+                  - id: references-oob
+                    type: GtkCheckButton
+                    properties:
+                      label: "oob"
+                    activetext: "oob"
+              - id: distances
+                type: GtkBox
+                parameters: :v
+                childrenlogic: or
+                children:
+                  - id: distances-chi2p
+                    type: GtkCheckButton
+                    properties:
+                      label: "chi2p"
+                    activetext: "_chi2p"
+                  - id: distances-chi2s
+                    type: GtkCheckButton
+                    properties:
+                      label: "chi2s"
+                    activetext: "_chi2s"
+                  - id: distances-emd
+                    type: GtkCheckButton
+                    properties:
+                      label: "emd"
+                    activetext: "_emd"
+                  - id: distances-h
+                    type: GtkCheckButton
+                    properties:
+                      label: "h"
+                    activetext: "_h"
+                  - id: distances-kl
+                    type: GtkCheckButton
+                    properties:
+                      label: "kl"
+                    activetext: "_kl"
+
+  # weightfix tab
+  - label: weightfix
+    regex: "$prefix_$datasets_$ftrain_$references_$distances.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/weightfix"
+      - id: datasets
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: datasets-gaussian
+            type: GtkCheckButton
+            properties:
+              label: "gaussian"
+            activetext: "gaussian"
+          - id: datasets-fact
+            type: GtkCheckButton
+            properties:
+              label: "fact"
+            activetext: "fact"
+          - id: datasets-magic
+            type: GtkCheckButton
+            properties:
+              label: "magic"
+            activetext: "magic"
+      - id: ftrain
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: ftrain-uniform
+            type: GtkCheckButton
+            properties:
+              label: "uniform/auxiliary"
+            activetext: "(uniform|auxiliary)"
+          - id: ftrain-appropriate
+            type: GtkCheckButton
+            properties:
+              label: "appropriate"
+            activetext: "appropriate"
+      - id: references
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: references-ib
+            type: GtkCheckButton
+            properties:
+              label: "ib"
+            activetext: "ib"
+          - id: references-oob
+            type: GtkCheckButton
+            properties:
+              label: "oob"
+            activetext: "oob"
+      - id: distances
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: distances-chi2p
+            type: GtkCheckButton
+            properties:
+              label: "chi2p"
+            activetext: "chi2p"
+          - id: distances-chi2s
+            type: GtkCheckButton
+            properties:
+              label: "chi2s"
+            activetext: "chi2s"
+          - id: distances-emd
+            type: GtkCheckButton
+            properties:
+              label: "emd"
+            activetext: "emd"
+          - id: distances-h
+            type: GtkCheckButton
+            properties:
+              label: "h"
+            activetext: "h"
+          - id: distances-kl
+            type: GtkCheckButton
+            properties:
+              label: "kl"
+            activetext: "kl"
+
+  # stepsize tab
+  - label: stepsize
+    regex: "$prefix_$datasets_$classifiers_$stepsizes_$references_$distances.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/stepsize"
+      - id: datasets
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: datasets-gaussian
+            type: GtkCheckButton
+            properties:
+              label: "gaussian"
+            activetext: "gaussian"
+          - id: datasets-fact
+            type: GtkCheckButton
+            properties:
+              label: "fact"
+            activetext: "fact"
+      - id: classifiers
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: classifiers-nb
+            type: GtkCheckButton
+            properties:
+              label: "nb"
+            activetext: "nb"
+          - id: classifiers-rf
+            type: GtkCheckButton
+            properties:
+              label: "rf"
+            activetext: "rf"
+      - id: stepsizes
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: stepsizes-constant
+            type: GtkCheckButton
+            properties:
+              label: "constant"
+            activetext: "constant"
+          - id: stepsizes-decay-exp
+            type: GtkCheckButton
+            properties:
+              label: "decay_exp"
+            activetext: "decay_exp"
+          - id: stepsizes-decay-mul
+            type: GtkCheckButton
+            properties:
+              label: "decay_mul"
+            activetext: "decay_mul"
+          - id: stepsizes-run
+            type: GtkCheckButton
+            properties:
+              label: "run"
+            activetext: "run"
+      - id: references
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: references-ib
+            type: GtkCheckButton
+            properties:
+              label: "ib"
+            activetext: "ib"
+          - id: references-oob
+            type: GtkCheckButton
+            properties:
+              label: "oob"
+            activetext: "oob"
+      - id: distances
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: distances-chi2p
+            type: GtkCheckButton
+            properties:
+              label: "chi2p"
+            activetext: "chi2p"
+          - id: distances-chi2s
+            type: GtkCheckButton
+            properties:
+              label: "chi2s"
+            activetext: "chi2s"
+          - id: distances-emd
+            type: GtkCheckButton
+            properties:
+              label: "emd"
+            activetext: "emd"
+          - id: distances-h
+            type: GtkCheckButton
+            properties:
+              label: "h"
+            activetext: "h"
+          - id: distances-kl
+            type: GtkCheckButton
+            properties:
+              label: "kl"
+            activetext: "kl"
+
+  # smoothing tab
+  - label: smoothing
+    regex: "$prefix_$references_$distances.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/smoothing"
+      - id: references
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: references-ib
+            type: GtkCheckButton
+            properties:
+              label: "ib"
+            activetext: "ib"
+          - id: references-oob
+            type: GtkCheckButton
+            properties:
+              label: "oob"
+            activetext: "oob"
+      - id: distances
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: distances-chi2p
+            type: GtkCheckButton
+            properties:
+              label: "chi2p"
+            activetext: "chi2p"
+          - id: distances-chi2s
+            type: GtkCheckButton
+            properties:
+              label: "chi2s"
+            activetext: "chi2s"
+          - id: distances-emd
+            type: GtkCheckButton
+            properties:
+              label: "emd"
+            activetext: "emd"
+          - id: distances-h
+            type: GtkCheckButton
+            properties:
+              label: "h"
+            activetext: "h"
+          - id: distances-kl
+            type: GtkCheckButton
+            properties:
+              label: "kl"
+            activetext: "kl"
+
+  # comparison tab
+  - label: comparison
+    regex: "$prefix_$datasets_$distances$k.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/comparison"
+      - id: datasets
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: datasets-gaussian
+            type: GtkCheckButton
+            properties:
+              label: "gaussian"
+            activetext: "gaussian"
+          - id: datasets-fact
+            type: GtkCheckButton
+            properties:
+              label: "fact"
+            activetext: "fact"
+          - id: datasets-magic
+            type: GtkCheckButton
+            properties:
+              label: "magic"
+            activetext: "magic"
+      - id: distances
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: distances-chi2p
+            type: GtkCheckButton
+            properties:
+              label: "chi2p"
+            activetext: "chi2p"
+          - id: distances-chi2s
+            type: GtkCheckButton
+            properties:
+              label: "chi2s"
+            activetext: "chi2s"
+          - id: distances-emd
+            type: GtkCheckButton
+            properties:
+              label: "emd"
+            activetext: "emd"
+          - id: distances-h
+            type: GtkCheckButton
+            properties:
+              label: "h"
+            activetext: "h"
+          - id: distances-kl
+            type: GtkCheckButton
+            properties:
+              label: "kl"
+            activetext: "kl"
+      - id: k
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: k-opt
+            type: GtkCheckButton
+            properties:
+              label: "k?"
+            activetext: "_k"
+
+  # comparison_parameter tab
+  - label: comparison_parameters
+    regex: "$prefix_$datasets_$ftrain_$methods_$references_$distances.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/comparison"
+      - id: datasets
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: datasets-gaussian
+            type: GtkCheckButton
+            properties:
+              label: "gaussian"
+            activetext: "gaussian"
+          - id: datasets-fact
+            type: GtkCheckButton
+            properties:
+              label: "fact"
+            activetext: "fact"
+          - id: datasets-magic
+            type: GtkCheckButton
+            properties:
+              label: "magic"
+            activetext: "magic"
+      - id: ftrain
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: ftrain-uniform
+            type: GtkCheckButton
+            properties:
+              label: "uniform/auxiliary"
+            activetext: "(uniform|auxiliary)"
+          - id: ftrain-appropriate
+            type: GtkCheckButton
+            properties:
+              label: "appropriate"
+            activetext: "appropriate"
+      - id: methods
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: methods-dsea-constant
+            type: GtkCheckButton
+            properties:
+              label: "dsea_constant"
+            activetext: "dsea_constant"
+          - id: methods-dsea-decay-exp
+            type: GtkCheckButton
+            properties:
+              label: "dsea_decay_exp"
+            activetext: "dsea_decay_exp"
+          - id: methods-dsea-decay-mul
+            type: GtkCheckButton
+            properties:
+              label: "dsea_decay_mul"
+            activetext: "dsea_decay_mul"
+          - id: methods-dsea-run
+            type: GtkCheckButton
+            properties:
+              label: "dsea_run"
+            activetext: "dsea_run"
+          - id: methods-run
+            type: GtkCheckButton
+            properties:
+              label: "run"
+            activetext: "run"
+          - id: methods-ibu
+            type: GtkCheckButton
+            properties:
+              label: "ibu"
+            activetext: "ibu"
+      - id: references
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: references-ib
+            type: GtkCheckButton
+            properties:
+              label: "ib"
+            activetext: "ib"
+          - id: references-oob
+            type: GtkCheckButton
+            properties:
+              label: "oob"
+            activetext: "oob"
+      - id: distances
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: distances-chi2p
+            type: GtkCheckButton
+            properties:
+              label: "chi2p"
+            activetext: "chi2p"
+          - id: distances-chi2s
+            type: GtkCheckButton
+            properties:
+              label: "chi2s"
+            activetext: "chi2s"
+          - id: distances-emd
+            type: GtkCheckButton
+            properties:
+              label: "emd"
+            activetext: "emd"
+          - id: distances-h
+            type: GtkCheckButton
+            properties:
+              label: "h"
+            activetext: "h"
+          - id: distances-kl
+            type: GtkCheckButton
+            properties:
+              label: "kl"
+            activetext: "kl"
+
+  # comparison_k tab
+  - label: comparison_k
+    regex: "$prefix_$datasets_$ftrain_$stepsizes_k.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/comparison"
+      - id: datasets
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: datasets-gaussian
+            type: GtkCheckButton
+            properties:
+              label: "gaussian"
+            activetext: "gaussian"
+          - id: datasets-fact
+            type: GtkCheckButton
+            properties:
+              label: "fact"
+            activetext: "fact"
+          - id: datasets-magic
+            type: GtkCheckButton
+            properties:
+              label: "magic"
+            activetext: "magic"
+      - id: ftrain
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: ftrain-uniform
+            type: GtkCheckButton
+            properties:
+              label: "uniform/auxiliary"
+            activetext: "(uniform|auxiliary)"
+          - id: ftrain-appropriate
+            type: GtkCheckButton
+            properties:
+              label: "appropriate"
+            activetext: "appropriate"
+      - id: stepsizes
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: stepsizes-constant
+            type: GtkCheckButton
+            properties:
+              label: "constant"
+            activetext: "constant"
+          - id: stepsizes-decay-exp
+            type: GtkCheckButton
+            properties:
+              label: "decay_exp"
+            activetext: "decay_exp"
+          - id: stepsizes-decay-mul
+            type: GtkCheckButton
+            properties:
+              label: "decay_mul"
+            activetext: "decay_mul"
+          - id: stepsizes-run
+            type: GtkCheckButton
+            properties:
+              label: "run"
+            activetext: "run"
+  
+  # comparison_pdfs tab
+  - label: comparison_pdfs
+    regex: "$prefix_$datasets_f_$methods.png"
+    widgets:
+      - id: prefix
+        type: GtkEntry
+        expand: true
+        properties:
+          text: "res/png/comparison"
+      - id: datasets
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: datasets-gaussian
+            type: GtkCheckButton
+            properties:
+              label: "gaussian"
+            activetext: "gaussian_auxiliary"
+          - id: datasets-fact
+            type: GtkCheckButton
+            properties:
+              label: "fact"
+            activetext: "fact_uniform"
+          - id: datasets-magic
+            type: GtkCheckButton
+            properties:
+              label: "magic"
+            activetext: "magic_uniform"
+      - id: methods
+        type: GtkBox
+        parameters: :v
+        childrenlogic: or
+        children:
+          - id: methods-dsea-constant
+            type: GtkCheckButton
+            properties:
+              label: "dsea_constant"
+            activetext: "dsea_constant"
+          - id: methods-dsea-run
+            type: GtkCheckButton
+            properties:
+              label: "dsea_run"
+            activetext: "dsea_run"
+          - id: methods-run
+            type: GtkCheckButton
+            properties:
+              label: "run"
+            activetext: "run"
+          - id: methods-ibu
+            type: GtkCheckButton
+            properties:
+              label: "ibu"
+            activetext: "ibu"
+

@@ -1,0 +1,22 @@
+# 
+# smart_control.yml
+# 
+# Experiments on the smart control of simulations with DSEA.
+# 
+job: smart_control # this file configures the function Job.<job>
+seed: 1337         # random number generator seed
+num_bootstraps: 20 # the number of bootstrap samples considered
+
+outfile: res/spectra/smart_control.csv # where spectra are stored for further inspection
+
+# the data set used
+dataset:
+    id: gaussian
+    skconfig: nb
+
+# min number and max number of training examples, together with the number of iterations
+smart_control:
+    min: 100
+    max: 50000
+    K:   10
+
