@@ -24,6 +24,7 @@ function install_dependencies()
     map(Pkg.clone, [ "git://github.com/mirkobunse/ComfyBase.jl.git",
                      "git://github.com/mirkobunse/ComfyCommons.jl.git",
                      "git://github.com/mirkobunse/CherenkovDeconvolution.jl.git" ])
+    Pkg.checkout("CherenkovDeconvolution", "0.0.1", pull=false) # v0.0.1 is used in the experiments
     Pkg.build()
     
     # make directories
