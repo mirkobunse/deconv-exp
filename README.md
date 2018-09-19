@@ -34,8 +34,8 @@ all dependencies in a Docker environment.
 Restart Julia to complete the installation.
 
 When the installation is complete, you can initialize your Julia kernel by loading the
-`juliarc.jl` from the repository's base directory.
-Including the `juliarc.jl` imports the modules of this repository, which is mandatory
+`_init.jl` from the repository's base directory.
+Including the `_init.jl` imports the modules of this repository, which is mandatory
 every time you start Julia.
 
     julia> include("_init.jl")  # make this call from /path/to/mt-exp
@@ -61,7 +61,7 @@ Any other container with the same mount point will have Julia's package reposito
 then.
 
 Inside a container, there is no need to manually include the `_init.jl` file, because this
-is done by the global `juliarc.jl` script.
+is done by the Docker `juliarc.jl` script.
 
 I recommend using at least 4 cores and 8GB of RAM in each experiment.
 
