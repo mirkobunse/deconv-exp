@@ -19,12 +19,14 @@ function install_dependencies()
                    "PGFPlots",
                    "Polynomials",
                    "YAML",
-                   "ScikitLearn",
                    "MultivariateStats" ])
-    map(Pkg.clone, [ "git://github.com/mirkobunse/ComfyBase.jl.git",
-                     "git://github.com/mirkobunse/ComfyCommons.jl.git",
-                     "git://github.com/mirkobunse/CherenkovDeconvolution.jl.git" ])
+    map(Pkg.clone, [ "https://github.com/mirkobunse/ComfyCommons.jl.git",
+                     "https://github.com/mirkobunse/ScikitLearn.jl.git",
+                     "https://github.com/mirkobunse/CherenkovDeconvolution.jl.git" ])
+    Pkg.checkout("ComfyCommons", "julia-0.6", pull=false) # branch for julia's 0.6 version
+    Pkg.checkout("ScikitLearn", "v0.4.0-fix", pull=false) # bug fix regarding pre-compilation
     Pkg.checkout("CherenkovDeconvolution", "0.0.1", pull=false) # v0.0.1 is used in the experiments
+    Pkg.pin("DataFrames", v"0.11.6") # bug occurs in 0.11.7
     Pkg.build()
     
     # make directories
@@ -35,12 +37,10 @@ function install_dependencies()
     
 end
 
-# the usual
+# project-specific initialization
 try
-    using ComfyBase
-    exit() = ComfyBase.confirmexit()
-    ComfyBase.loadrc(confirm=isa(STDIN,Base.TTY)) # only ask when in a TTY
+    isfile("_init.jl") && include(joinpath(pwd(), "_init.jl"))
 catch err
-    warn("Volume is not yet initialized. You can do so by calling initvolume()")
+    info("The volume is likely not initialized. Run `install_dependencies()` to solve this issue.")
 end
 

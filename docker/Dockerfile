@@ -21,9 +21,9 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     imagemagick		# imagemagick also required by julia packages
 
 # julia 0.6, following https://hub.docker.com/r/julialang/julia/
-RUN mkdir -p /opt/julia-0.6.2 && \
-    curl -s -L https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.2-linux-x86_64.tar.gz | tar -C /opt/julia-0.6.2 -x -z --strip-components=1 -f - && \
-    ln -fs /opt/julia-0.6.2     /opt/julia && \
+RUN mkdir -p /opt/julia-0.6.4 && \
+    curl -s -L https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.4-linux-x86_64.tar.gz | tar -C /opt/julia-0.6.4 -x -z --strip-components=1 -f - && \
+    ln -fs /opt/julia-0.6.4     /opt/julia && \
     ln -fs /opt/julia/bin/julia /bin/julia && \
     rm /opt/julia/etc/julia/juliarc.jl
 
