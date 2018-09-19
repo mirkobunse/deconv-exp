@@ -19,8 +19,7 @@ The results obtained from these experiments can be evaluated locally.
 
 ### Local
 
-I strongly recommend to use **Julia 0.6.2** for the following steps. At least, no other
-version was tested, so far.
+I strongly recommend to use **Julia 0.6** for the following steps.
 
 To run the experiments locally and to generate the plots, you need to install all module
 dependencies on your local system.
@@ -39,10 +38,7 @@ When the installation is complete, you can initialize your Julia kernel by loadi
 Including the `juliarc.jl` imports the modules of this repository, which is mandatory
 every time you start Julia.
 
-    julia> include("juliarc.jl")  # make this call from /path/to/mt-exp
-
-You can skip this manual step with the workflow utilities provided by
-[ComfyBase.jl](https://github.com/mirkobunse/ComfyBase.jl).
+    julia> include("_init.jl")  # make this call from /path/to/mt-exp
 
 
 ### Docker Container
@@ -64,8 +60,8 @@ it suffices to perform this setup once.
 Any other container with the same mount point will have Julia's package repository ready,
 then.
 
-The inclusion of the `juliarc.jl` file is required for every Julia session you start inside
-a container, just like in the local setup.
+Inside a container, there is no need to manually include the `_init.jl` file, because this
+is done by the global `juliarc.jl` script.
 
 I recommend using at least 4 cores and 8GB of RAM in each experiment.
 
@@ -74,10 +70,10 @@ I recommend using at least 4 cores and 8GB of RAM in each experiment.
 
 I provide additional utilities to members of the Collaborative Research Center SFB 876.
 These utilities ease the preparation and the usage of the experiments in our Docker cluster.
-Please contact me, if you are a member being interested in running your experiments there.
+Please contact me if you are a member being interested in running your experiments there.
 
 However, all experiments can be run in any Docker environment, as described above
-(hands-on experience required).
+(hands-on experience helpful).
 Thus, you do not have to have access to the SFB Docker cluster to reproduce the experimental
 results. Reach out if you have any issues!
 
