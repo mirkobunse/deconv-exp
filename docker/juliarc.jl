@@ -24,9 +24,9 @@ function install_dependencies()
                      "https://github.com/mirkobunse/ScikitLearn.jl.git",
                      "https://github.com/mirkobunse/CherenkovDeconvolution.jl.git" ])
     Pkg.checkout("ComfyCommons", "julia-0.6", pull=false) # branch for julia's 0.6 version
-    Pkg.checkout("ScikitLearn", "v0.4.0-fix", pull=false) # bug fix regarding pre-compilation
+    Pkg.checkout("ScikitLearn", "v0.3.0-fix", pull=false) # bug fix regarding pre-compilation
     Pkg.checkout("CherenkovDeconvolution", "0.0.1", pull=false) # v0.0.1 is used in the experiments
-    Pkg.pin("DataFrames", v"0.11.6") # bug occurs in 0.11.7
+    Pkg.pin("DataFrames", v"0.10.1") # bugs occur afterwards
     Pkg.build()
     
     # make directories
